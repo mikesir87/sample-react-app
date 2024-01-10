@@ -1,5 +1,10 @@
-FROM node:lts AS build
+FROM node:lts AS base
 WORKDIR /usr/local/app
+
+FROM base AS dev
+CMD ["yarn", "dev"]
+
+FROM base AS build
 COPY package.json yarn.lock ./
 RUN --mount=type=cache,id=yarn,target=/root/.yarn yarn install
 COPY ./.eslintrc.cjs ./index.html ./vite.config.js ./
