@@ -25,7 +25,6 @@ jobs:
           version: "lab:latest"
           driver: cloud
           endpoint: "promotestorg/demo-builder"
-          install: true
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
